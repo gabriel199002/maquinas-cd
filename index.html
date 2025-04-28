@@ -75,7 +75,8 @@
 </table>
 
 <script>
-  const publicSpreadsheetURL = 'https://docs.google.com/spreadsheets/d/1TlQPK--zY__YvKkdGOAOD8T99YAWaAHDZ_msldfuImQ/pubhtml';
+  // Solo el ID del Google Sheet, no todo el URL
+  const publicSpreadsheetID = '1TlQPK--zY__YvKkdGOAOD8T99YAWaAHDZ_msldfuImQ';
 
   let data = [];
 
@@ -87,7 +88,7 @@
 
   function fetchData() {
     Tabletop.init({
-      key: publicSpreadsheetURL,
+      key: publicSpreadsheetID,
       callback: showInfo,
       simpleSheet: true
     });
@@ -104,7 +105,6 @@
     const dateSelect = document.getElementById('filterDate');
     const nameSelect = document.getElementById('filterName');
 
-    // Guardar selección actual para no perderla al actualizar
     const currentMachine = machineSelect.value;
     const currentDate = dateSelect.value;
     const currentName = nameSelect.value;
@@ -142,7 +142,6 @@
       nameSelect.appendChild(option);
     });
 
-    // Restaurar selección previa
     machineSelect.value = currentMachine;
     dateSelect.value = currentDate;
     nameSelect.value = currentName;
